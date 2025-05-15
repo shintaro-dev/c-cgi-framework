@@ -1,4 +1,4 @@
-#include "framework.h"
+#include "../include/framework.h"
 
 int main(void) {
     cgi_request req;
@@ -10,6 +10,7 @@ int main(void) {
     business_logic(&req, &res);
 
     cgi_res_send(&res);
+    cgi_req_cleanup(&req);
 
     return 0;
 }
