@@ -12,13 +12,16 @@ C言語でCGIアプリを作るための軽量フレームワーク。
 - HTMLフォームとCGI連携の最小構成
 
 ## ディレクトリ構成
+
 ```text
 c-cgi-framework/
-├── src/            # フレームワーク本体
-├── include/        # ヘッダファイル群
-├── examples/       # 業務ロジック例 (hello.c など)
-├── public/         # 静的HTML (form.htmlなど)
-├── Makefile        # ビルド＆デプロイ用
+├── src/                # フレームワーク本体
+├── include/            # ヘッダファイル群
+├── examples/           # 業務ロジック例 (hello.c など)
+├── public/             # HTML資産
+│   ├── base/          # フレームワーク共通HTML (404.html など)
+│   └── examples/      # サンプル用HTML (form.html など)
+├── Makefile            # ビルド＆デプロイ用
 └── README.md
 ```
 
@@ -30,11 +33,15 @@ c-cgi-framework/
   - 静的HTML：`~/public_html/`
 
 ### 参考構成
+
 ```text
 ~/public_html/
-├── form.html
+├── 404.html             # フレームワーク共通HTML（例：404.htmlなど）
+├── examples/            # サンプル用HTML（form.html など）
+│   └── form.html
 └── cgi-bin/
     └── hello.cgi
+
 ```
 
 ## 使い方
@@ -55,11 +62,16 @@ make clean
 ```
 
 ### 動作確認
-ブラウザで以下にアクセスします。
+
+ブラウザで以下にアクセス：
+
 ```
-http://localhost/~ユーザー名/form.html
+http://localhost/~ユーザー名/examples/form.html
 ```
-フォーム送信で hello.cgi が動作します。
+
+1. フォームに名前を入力して送信します。
+2. `hello.cgi` が `cgi-bin/hello.cgi` を呼び出します。
+3. 入力に応じて `Hello, ○○!` というHTMLが表示されれば成功です。
 
 ## UserDir が使えない場合
 

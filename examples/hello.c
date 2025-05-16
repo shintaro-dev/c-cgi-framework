@@ -4,7 +4,7 @@
 int business_logic(const cgi_request *req, cgi_response *res) {
     const char *username = cgi_req_get_param(req, "username");
 
-    printf("Content-Type: text/html\r\n\r\n");
+    // 本文の出力だけ行う（ヘッダはフレームワーク側で出力済み）
     printf("<html><body>\n");
 
     if (username) {
